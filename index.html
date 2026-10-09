@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AniTracker PWA</title>
+
+    <!-- Configuración PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#141522">
+    <link rel="apple-touch-icon" href="icons/Sword Art Online.png">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Barra superior -->
+    <header class="top-nav">
+        <div class="nav-left">
+            <div class="brand-logo">
+                <span class="badge">LA</span>
+                <span class="brand-name">AniTracker</span>
+            </div>
+            <div class="search-box-wrapper">
+                <div class="search-box">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="search-input" placeholder="Buscar anime..." autocomplete="off">
+                    <button class="clear-search-btn" id="clear-search" style="display:none;" title="Limpiar búsqueda">✕</button>
+                    <button class="filter-btn" id="filter-btn">⚙️ Filtros</button>
+                </div>
+                <div id="search-dropdown" class="search-dropdown" style="display:none;"></div>
+            </div>
+        </div>
+
+        <div class="nav-right">
+            <span id="net-status" class="status-pill online">● En línea</span>
+            <button id="btn-notify" class="bell-btn">🔔 Notificaciones</button>
+            <div class="user-avatar">👤</div>
+        </div>
+    </header>
+
+    <main class="main-wrapper">
+
+        <!-- Hero Banner (Carrusel Interactivo) -->
+        <section class="hero-banner" id="hero-banner">
+            <div class="hero-content">
+                <h1 class="hero-title" id="hero-title">Solo Leveling</h1>
+                <div class="hero-meta">
+                    <span class="meta-item">TV</span>
+                    <span class="meta-bullet">•</span>
+                    <span class="meta-item">2026</span>
+                    <span class="meta-bullet">•</span>
+                    <span class="meta-status">En emisión 🟢</span>
+                </div>
+
+                <div class="hero-tags" id="hero-tags">
+                    <!-- Generados vía JS -->
+                </div>
+
+                <p class="hero-desc" id="hero-desc">
+                    Lleva el registro de tus animes preferidos en tiempo real.
+                </p>
+
+                <div class="hero-actions">
+                    <button class="btn-watch">▶ Seguir Anime</button>
+                    <div class="hero-arrows">
+                        <button class="arrow-btn" id="prev-slide">❮</button>
+                        <button class="arrow-btn" id="next-slide">❯</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Agregar Anime -->
+        <section class="add-section">
+            <h2>AGREGAR A MI LISTA</h2>
+            <form id="anime-form" class="anime-inputs">
+                <input type="text" id="anime-title" placeholder="Ej. Konosuba, Attack on Titan, SAO..." required>
+                <input type="number" id="anime-ep" placeholder="Capítulo actual" min="0" required>
+                <button type="submit" class="btn-submit">+ Guardar en Biblioteca</button>
+            </form>
+        </section>
+
+        <!-- Grid de Episodios Estilo Tarjeta -->
+        <section class="episodes-section" id="episodes-section">
+            <div class="section-header">
+                <h2 id="episodes-heading">Episodios</h2>
+                <span class="section-sub" id="episodes-sub">RECIENTEMENTE ACTUALIZADO</span>
+            </div>
+
+            <ul id="anime-list" class="cards-grid"></ul>
+        </section>
+
+    </main>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
